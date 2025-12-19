@@ -2,7 +2,7 @@
 
 // !!! ВАЖНО: Сюда вставьте адрес вашего сервера с Render !!!
 // Пример: const BACKEND_URL = 'https://peony-shop.onrender.com';
-const BACKEND_URL = 'http://localhost:3000'; // Используйте это для локальных тестов
+const BACKEND_URL = ''; // Используйте это для локальных тестов
 
 // Глобальные переменные
 let authModal, cartModal;
@@ -328,4 +328,5 @@ function switchForm(type) {
         loginBlock.style.display = type === 'login' ? 'block' : 'none';
         registerBlock.style.display = type === 'login' ? 'none' : 'block';
     }
+
 }
