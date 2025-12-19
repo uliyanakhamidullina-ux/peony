@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Peony</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="pink-header">
+        <nav class="pink-nav">
+            <div class="logo"><img src="images/logo.png" alt="Лого">Peony</div>
+            <ul class="nav-menu"><li><a href="index.html">Главная</a></li><li><a href="contacts.html" class="active">Контакты</a></li></ul>
+            <div class="nav-icons">
+                <i class="fas fa-user" title="Вход" onclick="openModal('login')"></i>
+                <div class="cart-icon-wrap" onclick="openModal('cart')"><i class="fas fa-shopping-bag" title="Корзина"></i><span class="cart-count" style="display: none;">0</span></div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container-page contacts-page-bg">
+        <div class="contacts-card">
+            <h1>Наши контакты</h1>
+            <div class="contact-item"><i class="fas fa-map-marker-alt"></i><p>г. Санкт-Петербург, Невский пр., д. 28 (Дом Зингера)</p></div>
+            <div class="contact-item"><i class="fas fa-phone-alt"></i><p>+7 (812) 123-45-67</p></div>
+            <div class="contact-item"><i class="fas fa-envelope"></i><p>spb@peony-shop.ru</p></div>
+            <div class="map-container"><iframe src="https://yandex.ru/map-widget/v1/?text=Санкт-Петербург,+Невский+проспект,+28&z=17" width="100%" height="400" frameborder="0" allowfullscreen="true"></iframe></div>
+            <div class="slogan-box">"Безупречный стиль и качество в каждой детали."</div>
+        </div>
+    </main>
+
+    <footer class="pink-footer">
+        <div class="footer-content">
+            <div class="footer-section"><h3>Peony</h3><p>Качество, которое вы чувствуете.</p></div>
+            <div class="footer-section"><h3>Меню</h3><a href="index.html">Главная</a><a href="contacts.html">Контакты</a></div>
+            <div class="footer-section"><h3>Мы в соцсетях</h3><div class="social-icons"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-telegram"></i></a></div></div>
+        </div>
+        <div class="footer-copyright"><p>&copy; 2025 Peony. Все права защищены.</p></div>
+    </footer>
+
+    <div class="modal-overlay" id="authModal" onclick="closeModal(event, 'authModal')"><div class="modal-window"><span class="close-modal" onclick="closeModalBtn('authModal')">&times;</span><div id="loginFormBlock"><h2>Вход</h2><form><div class="form-group"><label>Email</label><input type="email" class="form-input" required></div><div class="form-group"><label>Пароль</label><input type="password" class="form-input" required></div><button type="submit" class="auth-button">Войти</button></form><div class="switch-form">Нет аккаунта? <a onclick="switchForm('register')">Зарегистрироваться</a></div></div><div id="registerFormBlock" style="display: none;"><h2>Регистрация</h2><form id="regForm"><div class="form-group"><label>Имя</label><input type="text" class="form-input" required></div><div class="form-group"><label>Email</label><input type="email" class="form-input" required></div><div class="form-group"><label>Пароль</label><input type="password" id="regPass" class="form-input" required></div><div class="form-group"><label>Подтвердите пароль</label><input type="password" id="regConfirm" class="form-input" required><div class="error-message" id="passError">Пароли не совпадают</div></div><button type="submit" class="auth-button">Зарегистрироваться</button></form><div class="switch-form">Уже есть аккаунт? <a onclick="switchForm('login')">Войти</a></div></div></div></div>
+    <div class="modal-overlay" id="cartModal" onclick="closeModal(event, 'cartModal')"><div class="modal-window"><span class="close-modal" onclick="closeModalBtn('cartModal')">&times;</span><h2>Ваша корзина</h2><div id="cartEmptyMsg" class="empty-cart-msg"><i class="fas fa-shopping-basket" style="font-size: 3rem; margin-bottom: 1rem; color: #eee;"></i><p>В корзине пока пусто</p></div><div id="cartContent" style="display: none;"><div class="cart-items-container" id="cartItems"></div><div class="cart-total">Итого: <span id="cartTotal">0 ₽</span></div><form id="checkoutForm" class="checkout-form"><h3>Оформление заказа</h3><div class="form-group"><label>Ваше имя</label><input type="text" id="orderName" class="form-input" placeholder="Анна" required></div><div class="form-group"><label>Телефон</label><input type="tel" id="orderPhone" class="form-input" placeholder="+7 (999) 000-00-00" required></div><div class="form-group"><label>Адрес и комментарий</label><textarea id="orderComment" placeholder="Адрес..."></textarea></div><button type="submit" class="auth-button">Оформить заказ</button></form></div></div></div>
+    <script src="script.js"></script>
+</body>
+</html>

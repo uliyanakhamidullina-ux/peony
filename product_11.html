@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Юбка Мини - Peony</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="pink-header"><nav class="pink-nav"><div class="logo"><img src="images/logo.png" alt="Лого">Peony</div><ul class="nav-menu"><li><a href="index.html">Главная</a></li><li><a href="contacts.html">Контакты</a></li></ul><div class="nav-icons"><i class="fas fa-user" title="Вход" onclick="openModal('login')"></i><div class="cart-icon-wrap" onclick="openModal('cart')"><i class="fas fa-shopping-bag" title="Корзина"></i><span class="cart-count" style="display: none;">0</span></div></div></nav></header>
+
+    <main class="container-page">
+        <div style="margin-bottom: 2rem;"><a href="index.html" style="text-decoration: none; color: #5D3B3F; font-weight: 500;">&larr; Вернуться в каталог</a></div>
+        <div class="product-detail-card">
+            <div class="product-detail-image">
+                <div class="main-image-container">
+                    <button class="slider-arrow prev-arrow" onclick="changeSlide(-1)">&#10094;</button>
+                    <img id="mainProductImg" src="images/img11.jpeg" alt="Юбка">
+                    <button class="slider-arrow next-arrow" onclick="changeSlide(1)">&#10095;</button>
+                </div>
+                <div class="thumbnails-row">
+                    <img src="images/img11.jpeg" class="thumb-img active" onclick="currentSlide(0)" alt="Фото 1">
+                    <img src="images/img11_1.jpeg" class="thumb-img" onclick="currentSlide(1)" alt="Фото 2">
+                    <img src="images/img11_2.jpeg" class="thumb-img" onclick="currentSlide(2)" alt="Фото 3">
+                    <img src="images/img11_3.jpeg" class="thumb-img" onclick="currentSlide(3)" alt="Фото 4">
+                    <img src="images/img11_4.jpeg" class="thumb-img" onclick="currentSlide(4)" style="display: none;">
+                </div>
+            </div>
+            <div class="product-detail-info">
+                <h1>Юбка Мини</h1>
+                <p class="detail-price">3 100 ₽</p>
+                <p class="description">Игривая юбка длины мини. Отличный выбор для прогулок и встреч с друзьями. Сочетается с кедами и туфлями.</p>
+                <div class="specs"><h3>Характеристики:</h3><ul><li><strong>Материал:</strong> Деним / Хлопок</li><li><strong>Цвет:</strong> Серый</li><li><strong>Уход:</strong> Стирка 40°C</li></ul></div>
+                <div class="size-selection"><span class="size-label">Выберите размер:</span><div class="size-options"><div class="size-option">XS</div><div class="size-option">S</div><div class="size-option">M</div><div class="size-option">L</div></div></div>
+                <button class="hero-button" onclick="addToCart('Юбка Мини', 3100, 'images/img11.jpeg')">Добавить в корзину</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="pink-footer"><div class="footer-content"><div class="footer-section"><h3>Peony</h3><p>Качество, которое вы чувствуете.</p></div><div class="footer-section"><h3>Меню</h3><a href="index.html">Главная</a><a href="contacts.html">Контакты</a></div><div class="footer-section"><h3>Мы в соцсетях</h3><div class="social-icons"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-telegram"></i></a></div></div></div><div class="footer-copyright"><p>&copy; 2025 Peony. Все права защищены.</p></div></footer>
+    <div class="modal-overlay" id="authModal" onclick="closeModal(event, 'authModal')"><div class="modal-window"><span class="close-modal" onclick="closeModalBtn('authModal')">&times;</span><div id="loginFormBlock"><h2>Вход</h2><form><div class="form-group"><label>Email</label><input type="email" class="form-input" required></div><div class="form-group"><label>Пароль</label><input type="password" class="form-input" required></div><button type="submit" class="auth-button">Войти</button></form><div class="switch-form">Нет аккаунта? <a onclick="switchForm('register')">Зарегистрироваться</a></div></div><div id="registerFormBlock" style="display: none;"><h2>Регистрация</h2><form id="regForm"><div class="form-group"><label>Имя</label><input type="text" class="form-input" required></div><div class="form-group"><label>Email</label><input type="email" class="form-input" required></div><div class="form-group"><label>Пароль</label><input type="password" id="regPass" class="form-input" required></div><div class="form-group"><label>Подтвердите пароль</label><input type="password" id="regConfirm" class="form-input" required><div class="error-message" id="passError">Пароли не совпадают</div></div><button type="submit" class="auth-button">Зарегистрироваться</button></form><div class="switch-form">Уже есть аккаунт? <a onclick="switchForm('login')">Войти</a></div></div></div></div>
+    <div class="modal-overlay" id="cartModal" onclick="closeModal(event, 'cartModal')"><div class="modal-window"><span class="close-modal" onclick="closeModalBtn('cartModal')">&times;</span><h2>Ваша корзина</h2><div id="cartEmptyMsg" class="empty-cart-msg"><i class="fas fa-shopping-basket" style="font-size: 3rem; margin-bottom: 1rem; color: #eee;"></i><p>В корзине пока пусто</p></div><div id="cartContent" style="display: none;"><div class="cart-items-container" id="cartItems"></div><div class="cart-total">Итого: <span id="cartTotal">0 ₽</span></div><form id="checkoutForm" class="checkout-form"><h3>Оформление заказа</h3><div class="form-group"><label>Ваше имя</label><input type="text" id="orderName" class="form-input" placeholder="Анна" required></div><div class="form-group"><label>Телефон</label><input type="tel" id="orderPhone" class="form-input" placeholder="+7 (999) 000-00-00" required></div><div class="form-group"><label>Адрес и комментарий</label><textarea id="orderComment" placeholder="Адрес..."></textarea></div><button type="submit" class="auth-button">Оформить заказ</button></form></div></div></div>
+    <script src="script.js"></script>
+</body>
+</html>
