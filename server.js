@@ -1,27 +1,32 @@
 const express = require('express');
 const { Pool } = require('pg');
 const cors = require('cors');
+const path = require('path'); // <-- ВАЖНО: Добавили модуль для работы с путями
 require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Разрешаем запросы с вашего сайта
+// 1. Настройки безопасности и парсинга
 app.use(cors());
-app.use(express.json()); // Чтобы сервер понимал JSON
+app.use(express.json());
 
-// Подключение к базе данных Render
+// 2. ВАЖНО: Раздача статических файлов (CSS, JS, Images)
+// Это говорит серверу: "Ищи файлы в текущей папке"
+app.use(express.static(__dirname));
+
+// 3. Подключение к базе данных
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: {
-        rejectUnauthorized: false // Обязательно для Render
+        rejectUnauthorized: false
     }
 });
 
-// --- 1. СОЗДАНИЕ ТАБЛИЦ (Запустить 1 раз через браузер) ---
+// --- API МАРШРУТЫ (База данных) ---
+
 app.get('/setup-db', async (req, res) => {
     try {
-        // Таблица пользователей
         await pool.query(`
             CREATE TABLE IF NOT EXISTS users (
                 id SERIAL PRIMARY KEY,
@@ -30,9 +35,6 @@ app.get('/setup-db', async (req, res) => {
                 password VARCHAR(100)
             );
         `);
-
-        // Таблица заказов (ОТДЕЛЬНАЯ ТАБЛИЦА)
-        // cart_items будем хранить как текст (JSON), чтобы не усложнять
         await pool.query(`
             CREATE TABLE IF NOT EXISTS orders (
                 id SERIAL PRIMARY KEY,
@@ -44,15 +46,13 @@ app.get('/setup-db', async (req, res) => {
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
         `);
-
         res.send('База данных успешно настроена! Таблицы users и orders созданы.');
     } catch (err) {
         console.error(err);
-        res.status(500).send('Ошибка создания таблиц: ' + err.message);
+        res.status(500).send('Ошибка настройки БД: ' + err.message);
     }
 });
 
-// --- 2. РЕГИСТРАЦИЯ ---
 app.post('/api/register', async (req, res) => {
     const { name, email, password } = req.body;
     try {
@@ -62,11 +62,10 @@ app.post('/api/register', async (req, res) => {
         );
         res.json(result.rows[0]);
     } catch (err) {
-        res.status(500).json({ error: 'Ошибка регистрации (email занят?)' });
+        res.status(500).json({ error: 'Ошибка регистрации' });
     }
 });
 
-// --- 3. ВХОД ---
 app.post('/api/login', async (req, res) => {
     const { email, password } = req.body;
     try {
@@ -84,25 +83,28 @@ app.post('/api/login', async (req, res) => {
     }
 });
 
-// --- 4. СОХРАНЕНИЕ ЗАКАЗА (Новый функционал) ---
 app.post('/api/orders', async (req, res) => {
     const { userName, phone, address, totalPrice, cartItems } = req.body;
-    
-    // Превращаем массив товаров в строку для сохранения в БД
     const itemsString = JSON.stringify(cartItems);
-
     try {
         await pool.query(
             'INSERT INTO orders (user_name, phone, address, total_price, cart_items) VALUES ($1, $2, $3, $4, $5)',
             [userName, phone, address, totalPrice, itemsString]
         );
-        res.json({ message: 'Заказ успешно сохранен!' });
+        res.json({ message: 'Заказ сохранен' });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'Ошибка сохранения заказа' });
     }
 });
 
+// 4. ВАЖНО: Маршрут для Главной страницы
+// Если сервер не понял запрос, он вернет index.html
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// Запуск сервера
 app.listen(port, () => {
     console.log(`Сервер запущен на порту ${port}`);
 });
