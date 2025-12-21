@@ -43,7 +43,13 @@ document.addEventListener('DOMContentLoaded', function() {
             const confirm = inputs[3].value;
             const error = document.getElementById('passError');
 
-            // Проверка паролей
+            // --- НОВАЯ ПРОВЕРКА: Длина пароля ---
+            if (pass.length < 6) {
+                alert('Пароль должен содержать минимум 6 символов!');
+                return;
+            }
+
+            // Проверка совпадения паролей
             if (pass !== confirm) {
                 error.style.display = 'block';
                 return;
@@ -328,5 +334,4 @@ function switchForm(type) {
         loginBlock.style.display = type === 'login' ? 'block' : 'none';
         registerBlock.style.display = type === 'login' ? 'none' : 'block';
     }
-
 }
