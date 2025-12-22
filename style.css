@@ -233,13 +233,25 @@ main { flex: 1; }
 .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); z-index: 2000; display: none; justify-content: center; align-items: center; }
 .modal-overlay.active { display: flex; }
 
-.modal-window { 
-    background: white; width: 90%; max-width: 450px; padding: 2.5rem; 
-    border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.2); position: relative;
+.modal-window {
+    background: white;
+    width: 90%;
+    max-width: 450px;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    position: relative;
     
-    /* ИСПРАВЛЕНИЕ: Убираем принудительный скроллбар */
-    height: auto; 
-    overflow-y: visible;
+    /* Эти 4 строки делают магию: */
+    max-height: 90vh;        /* Ограничиваем высоту окна */
+    overflow-y: scroll;      /* Включаем прокрутку */
+    scrollbar-width: none;   /* Скрываем скроллбар в Firefox */
+    -ms-overflow-style: none; /* Скрываем скроллбар в IE/Edge */
+}
+
+/* Скрываем скроллбар в Chrome и Safari */
+.modal-window::-webkit-scrollbar {
+    display: none;
 }
 
 .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; color: #aaa; cursor: pointer; }
@@ -295,3 +307,4 @@ textarea { resize: vertical; min-height: 80px; }
         grid-template-columns: 1fr; /* 1 в ряд на мобильных */
     }
 }
+
