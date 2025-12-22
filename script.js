@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const confirm = inputs[3].value;
             const error = document.getElementById('passError');
 
-            // --- НОВАЯ ПРОВЕРКА: Длина пароля ---
+            // --- ПРОВЕРКА: Длина пароля ---
             if (pass.length < 6) {
                 alert('Пароль должен содержать минимум 6 символов!');
                 return;
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const user = await response.json();
 
                 if (response.ok) {
-                    // Сохраняем текущего пользователя в браузере, чтобы помнить его
+                    // Сохраняем текущего пользователя в браузере
                     localStorage.setItem('peonyCurrentUser', JSON.stringify(user));
                     checkAuth(); // Обновляем шапку
                     closeModal(null, 'authModal');
@@ -134,6 +134,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const phone = document.getElementById('orderPhone').value;
             const address = document.getElementById('orderComment').value;
             
+            // --- ПРОВЕРКА: Валидация телефона ---
+            // Разрешает: +7 (999) 000-00-00, 89990000000, 8-999-000-00-00
+            const phoneRegex = /^(\+7|8)?[\s\(]*\d{3}[\s\)]*[\d\s-]{7,10}$/;
+            
+            if (!phoneRegex.test(phone)) {
+                alert('Пожалуйста, введите корректный номер телефона!\nПример: +7 (999) 000-00-00');
+                return;
+            }
+
             // Считаем общую сумму
             const total = cart.reduce((sum, item) => sum + item.price, 0);
 
