@@ -94,6 +94,7 @@
     <div class="modal-overlay" id="authModal" onclick="closeModal(event, 'authModal')">
         <div class="modal-window">
             <span class="close-modal" onclick="closeModalBtn('authModal')">&times;</span>
+            
             <div id="loginFormBlock">
                 <h2>Вход</h2>
                 <form>
@@ -109,13 +110,27 @@
                 </form>
                 <div class="switch-form">Нет аккаунта? <a onclick="switchForm('register')">Зарегистрироваться</a></div>
             </div>
+
             <div id="registerFormBlock" style="display: none;">
                 <h2>Регистрация</h2>
                 <form id="regForm">
-                    <div class="form-group"><label>Имя</label><input type="text" class="form-input" required></div>
-                    <div class="form-group"><label>Email</label><input type="email" class="form-input" required></div>
-                    <div class="form-group"><label>Пароль</label><input type="password" id="regPass" class="form-input" required></div>
-                    <div class="form-group"><label>Подтвердите пароль</label><input type="password" id="regConfirm" class="form-input" required><div class="error-message" id="passError">Пароли не совпадают</div></div>
+                    <div class="form-group">
+                        <label>Имя</label>
+                        <input type="text" class="form-input" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-input" placeholder="name@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Пароль</label>
+                        <input type="password" id="regPass" class="form-input" placeholder="Придумайте пароль" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Подтвердите пароль</label>
+                        <input type="password" id="regConfirm" class="form-input" placeholder="Повторите пароль" required>
+                        <div class="error-message" id="passError">Пароли не совпадают</div>
+                    </div>
                     <button type="submit" class="auth-button">Зарегистрироваться</button>
                 </form>
                 <div class="switch-form">Уже есть аккаунт? <a onclick="switchForm('login')">Войти</a></div>
