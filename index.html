@@ -3,97 +3,236 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peony - Стиль и Качество</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <title>Peony - Интернет-магазин женской одежды</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+
     <header class="pink-header">
         <nav class="pink-nav">
-            <div class="logo"><img src="images/logo.png" alt="Лого">Peony</div>
-            <ul class="nav-menu"><li><a href="index.html" class="active">Главная</a></li><li><a href="contacts.html">Контакты</a></li></ul>
+            <div class="logo">
+                <i class="fas fa-gem" style="color: #d88ea3;"></i> 
+                Peony
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Главная</a></li>
+                <li><a href="#catalog">Каталог</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+
             <div class="nav-icons">
-                <i class="fas fa-user" title="Вход" onclick="openModal('login')"></i>
-                <div class="cart-icon-wrap" onclick="openModal('cart')"><i class="fas fa-shopping-bag" title="Корзина"></i><span class="cart-count" style="display: none;">0</span></div>
+                <i class="fas fa-user" onclick="openModal('login')" title="Войти"></i>
+                
+                <div class="cart-icon-wrap" onclick="openModal('cart')">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" style="display: none;">0</span>
+                </div>
             </div>
         </nav>
     </header>
 
     <main>
         <section class="hero-section">
-            <h1 class="hero-title">Безупречный стиль и качество</h1>
-            <p class="hero-subtitle">Мы создаем одежду из премиальных тканей для женщин, которые ценят комфорт, элегантность и долговечность каждой детали.</p>
-            <a href="#catalog"><button class="hero-button">Перейти в каталог</button></a>
+            <h1 class="hero-title">Нежность в каждом образе</h1>
+            <p class="hero-subtitle">
+                Откройте для себя новую коллекцию одежды, созданную подчеркнуть вашу женственность и уникальный стиль.
+            </p>
+            <button class="hero-button" onclick="document.getElementById('catalog').scrollIntoView()">Перейти в каталог</button>
         </section>
 
         <section class="popular-section">
-            <h2 class="section-title">Популярное в этом сезоне</h2>
+            <h2 class="section-title">Популярное</h2>
             <div class="popular-container">
-                
                 <div class="popular-card">
-                    <img src="images/img1.jpeg" class="product-image" alt="Платье">
-                    <div class="product-info"><h3 class="product-title">Платье Мини</h3><p class="product-price">5 990 ₽</p><a href="product_1.html"><button class="add-to-cart">Подробнее</button></a></div>
+                    <img src="https://via.placeholder.com/200x250?text=Dress" alt="Платье" class="product-image">
+                    <div class="product-info">
+                        <div class="product-title">Летнее платье</div>
+                        <div class="product-price">3 500 ₽</div>
+                        <a href="product_1.html" class="add-to-cart" style="text-decoration:none; display:inline-block;">Подробнее</a>
+                    </div>
                 </div>
-
                 <div class="popular-card">
-                    <img src="images/img4.jpeg" class="product-image" alt="Жакет">
-                    <div class="product-info"><h3 class="product-title">Жакет Премиум</h3><p class="product-price">8 490 ₽</p><a href="product_4.html"><button class="add-to-cart">Подробнее</button></a></div>
+                    <img src="https://via.placeholder.com/200x250?text=Blouse" alt="Блузка" class="product-image">
+                    <div class="product-info">
+                        <div class="product-title">Шелковая блуза</div>
+                        <div class="product-price">2 800 ₽</div>
+                        <a href="#" class="add-to-cart" style="text-decoration:none; display:inline-block;">Подробнее</a>
+                    </div>
                 </div>
-
-                <div class="popular-card">
-                    <img src="images/img12.jpeg" class="product-image" alt="Костюм">
-                    <div class="product-info"><h3 class="product-title">Костюм Брючный</h3><p class="product-price">12 000 ₽</p><a href="product_12.html"><button class="add-to-cart">Подробнее</button></a></div>
+                 <div class="popular-card">
+                    <img src="https://via.placeholder.com/200x250?text=Skirt" alt="Юбка" class="product-image">
+                    <div class="product-info">
+                        <div class="product-title">Юбка мини</div>
+                        <div class="product-price">2 100 ₽</div>
+                        <a href="#" class="add-to-cart" style="text-decoration:none; display:inline-block;">Подробнее</a>
+                    </div>
                 </div>
-
-                <div class="popular-card">
-                    <img src="images/img9.jpeg" class="product-image" alt="Платье">
-                    <div class="product-info"><h3 class="product-title">Платье Вечернее</h3><p class="product-price">9 000 ₽</p><a href="product_9.html"><button class="add-to-cart">Подробнее</button></a></div>
+                 <div class="popular-card">
+                    <img src="https://via.placeholder.com/200x250?text=Jacket" alt="Жакет" class="product-image">
+                    <div class="product-info">
+                        <div class="product-title">Розовый жакет</div>
+                        <div class="product-price">4 500 ₽</div>
+                        <a href="#" class="add-to-cart" style="text-decoration:none; display:inline-block;">Подробнее</a>
+                    </div>
                 </div>
-
-                <div class="popular-card">
-                    <img src="images/img10.jpeg" class="product-image" alt="Топ">
-                    <div class="product-info"><h3 class="product-title">Топ на бретелях</h3><p class="product-price">1 500 ₽</p><a href="product_10.html"><button class="add-to-cart">Подробнее</button></a></div>
-                </div>
-
-                <div class="popular-card">
-                    <img src="images/img2.jpeg" class="product-image" alt="Блузка">
-                    <div class="product-info"><h3 class="product-title">Блузка Шелковая</h3><p class="product-price">3 590 ₽</p><a href="product_2.html"><button class="add-to-cart">Подробнее</button></a></div>
-                </div>
-
             </div>
         </section>
 
-        <section class="products-section" id="catalog">
+        <section id="catalog">
             <h2 class="section-title">Каталог товаров</h2>
             <div class="products-grid">
-                <div class="product-card"><img src="images/img1.jpeg" class="product-image"><div class="product-info"><h3 class="product-title">Платье Мини</h3><p class="product-price">5 990 ₽</p><a href="product_1.html"><button class="add-to-cart">Подробнее</button></a></div></div>
-                <div class="product-card"><img src="images/img2.jpeg" class="product-image"><div class="product-info"><h3 class="product-title">Блузка Шелковая</h3><p class="product-price">3 590 ₽</p><a href="product_2.html"><button class="add-to-cart">Подробнее</button></a></div></div>
-                <div class="product-card"><img src="images/img3.jpeg" class="product-image"><div class="product-info"><h3 class="product-title">Юбка Классика</h3><p class="product-price">4 200 ₽</p><a href="product_3.html"><button class="add-to-cart">Подробнее</button></a></div></div>
-                <div class="product-card"><img src="images/img4.jpeg" class="product-image"><div class="product-info"><h3 class="product-title">Жакет Премиум</h3><p class="product-price">8 490 ₽</p><a href="product_4.html"><button class="add-to-cart">Подробнее</button></a></div></div>
-                <div class="product-card"><img src="images/img5.jpeg" class="product-image"><div class="product-info"><h3 class="product-title">Платье "Нежность"</h3><p class="product-price">6 200 ₽</p><a href="product_5.html"><button class="add-to-cart">Подробнее</button></a></div></div>
-                <div class="product-card"><img src="images/img6.jpeg" class="product-image"><div class="product-info"><h3 class="product-title">Приталенная блуза</h3><p class="product-price">2 990 ₽</p><a href="product_6.html"><button class="add-to-cart">Подробнее</button></a></div></div>
-                <div class="product-card"><img src="images/img7.jpeg" class="product-image"><div class="product-info"><h3 class="product-title">Юбка Миди</h3><p class="product-price">3 800 ₽</p><a href="product_7.html"><button class="add-to-cart">Подробнее</button></a></div></div>
-                <div class="product-card"><img src="images/img8.jpeg" class="product-image"><div class="product-info"><h3 class="product-title">Жакет с молнией</h3><p class="product-price">7 500 ₽</p><a href="product_8.html"><button class="add-to-cart">Подробнее</button></a></div></div>
-                <div class="product-card"><img src="images/img9.jpeg" class="product-image"><div class="product-info"><h3 class="product-title">Платье с кружевом</h3><p class="product-price">9 000 ₽</p><a href="product_9.html"><button class="add-to-cart">Подробнее</button></a></div></div>
-                <div class="product-card"><img src="images/img10.jpeg" class="product-image"><div class="product-info"><h3 class="product-title">Топ на бретелях</h3><p class="product-price">1 500 ₽</p><a href="product_10.html"><button class="add-to-cart">Подробнее</button></a></div></div>
-                <div class="product-card"><img src="images/img11.jpeg" class="product-image"><div class="product-info"><h3 class="product-title">Юбка Мини</h3><p class="product-price">3 100 ₽</p><a href="product_11.html"><button class="add-to-cart">Подробнее</button></a></div></div>
-                <div class="product-card"><img src="images/img12.jpeg" class="product-image"><div class="product-info"><h3 class="product-title">Костюм Брючный</h3><p class="product-price">12 000 ₽</p><a href="product_12.html"><button class="add-to-cart">Подробнее</button></a></div></div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x400?text=Product+1" alt="Платье" class="product-image">
+                    <div class="product-info">
+                        <div class="product-title">Вечернее платье</div>
+                        <div class="product-price">5 200 ₽</div>
+                        <a href="product_1.html"><button class="add-to-cart">Купить</button></a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x400?text=Product+2" alt="Костюм" class="product-image">
+                    <div class="product-info">
+                        <div class="product-title">Деловой костюм</div>
+                        <div class="product-price">6 500 ₽</div>
+                        <button class="add-to-cart">Купить</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x400?text=Product+3" alt="Пальто" class="product-image">
+                    <div class="product-info">
+                        <div class="product-title">Бежевое пальто</div>
+                        <div class="product-price">8 900 ₽</div>
+                        <button class="add-to-cart">Купить</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x400?text=Product+4" alt="Свитер" class="product-image">
+                    <div class="product-info">
+                        <div class="product-title">Уютный свитер</div>
+                        <div class="product-price">3 200 ₽</div>
+                        <button class="add-to-cart">Купить</button>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
     <footer class="pink-footer">
         <div class="footer-content">
-            <div class="footer-section"><h3>Peony</h3><p>Качество, которое вы чувствуете.</p></div>
-            <div class="footer-section"><h3>Меню</h3><a href="index.html">Главная</a><a href="contacts.html">Контакты</a></div>
-            <div class="footer-section"><h3>Мы в соцсетях</h3><div class="social-icons"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-telegram"></i></a></div></div></div><div class="footer-copyright"><p>&copy; 2025 Peony. Все права защищены.</p></div>
+            <div class="footer-section">
+                <h3>Peony</h3>
+                <p>Магазин стильной одежды для<br>самых нежных образов.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Покупателям</h3>
+                <a href="#">Доставка и оплата</a>
+                <a href="#">Возврат товара</a>
+                <a href="#">Таблица размеров</a>
+            </div>
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <a href="tel:+79990000000">+7 (999) 000-00-00</a>
+                <a href="mailto:info@peony.shop">info@peony.shop</a>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            &copy; 2025 Peony Shop. Все права защищены.
+        </div>
     </footer>
 
-    <div class="modal-overlay" id="authModal" onclick="closeModal(event, 'authModal')"><div class="modal-window"><span class="close-modal" onclick="closeModalBtn('authModal')">&times;</span><div id="loginFormBlock"><h2>Вход</h2><form><div class="form-group"><label>Email</label><input type="email" class="form-input" required></div><div class="form-group"><label>Пароль</label><input type="password" class="form-input" required></div><button type="submit" class="auth-button">Войти</button></form><div class="switch-form">Нет аккаунта? <a onclick="switchForm('register')">Зарегистрироваться</a></div></div><div id="registerFormBlock" style="display: none;"><h2>Регистрация</h2><form id="regForm"><div class="form-group"><label>Имя</label><input type="text" class="form-input" required></div><div class="form-group"><label>Email</label><input type="email" class="form-input" required></div><div class="form-group"><label>Пароль</label><input type="password" id="regPass" class="form-input" required></div><div class="form-group"><label>Подтвердите пароль</label><input type="password" id="regConfirm" class="form-input" required><div class="error-message" id="passError">Пароли не совпадают</div></div><button type="submit" class="auth-button">Зарегистрироваться</button></form><div class="switch-form">Уже есть аккаунт? <a onclick="switchForm('login')">Войти</a></div></div></div></div>
-    <div class="modal-overlay" id="cartModal" onclick="closeModal(event, 'cartModal')"><div class="modal-window"><span class="close-modal" onclick="closeModalBtn('cartModal')">&times;</span><h2>Ваша корзина</h2><div id="cartEmptyMsg" class="empty-cart-msg"><i class="fas fa-shopping-basket" style="font-size: 3rem; margin-bottom: 1rem; color: #eee;"></i><p>В корзине пока пусто</p></div><div id="cartContent" style="display: none;"><div class="cart-items-container" id="cartItems"></div><div class="cart-total">Итого: <span id="cartTotal">0 ₽</span></div><form id="checkoutForm" class="checkout-form"><h3>Оформление заказа</h3><div class="form-group"><label>Ваше имя</label><input type="text" id="orderName" class="form-input" placeholder="Анна" required></div><div class="form-group"><label>Телефон</label><input type="tel" id="orderPhone" class="form-input" placeholder="+7 (999) 000-00-00" required></div><div class="form-group"><label>Адрес и комментарий</label><textarea id="orderComment" placeholder="Адрес..."></textarea></div><button type="submit" class="auth-button">Оформить заказ</button></form></div></div></div>
-    
+    <div class="modal-overlay" id="authModal" onclick="closeModal(event, 'authModal')">
+        <div class="modal-window">
+            <span class="close-modal" onclick="closeModalBtn('authModal')">&times;</span>
+            
+            <div id="loginFormBlock">
+                <h2>Вход</h2>
+                <form>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-input" placeholder="name@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Пароль</label>
+                        <input type="password" class="form-input" placeholder="Введите ваш пароль" required>
+                    </div>
+                    <button type="submit" class="auth-button">Войти</button>
+                    <div class="switch-form">
+                        Нет аккаунта? <a onclick="switchForm('register')">Зарегистрироваться</a>
+                    </div>
+                </form>
+            </div>
+
+            <div id="registerFormBlock" style="display: none;">
+                <h2>Регистрация</h2>
+                <form id="regForm">
+                    <div class="form-group">
+                        <label>Имя</label>
+                        <input type="text" class="form-input" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-input" placeholder="name@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Пароль</label>
+                        <input type="password" class="form-input" placeholder="Придумайте пароль" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Подтвердите пароль</label>
+                        <input type="password" class="form-input" placeholder="Повторите пароль" required>
+                        <div class="error-message" id="passError">Пароли не совпадают</div>
+                    </div>
+                    <button type="submit" class="auth-button">Зарегистрироваться</button>
+                    <div class="switch-form">
+                        Уже есть аккаунт? <a onclick="switchForm('login')">Войти</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="cartModal" onclick="closeModal(event, 'cartModal')">
+        <div class="modal-window">
+            <span class="close-modal" onclick="closeModalBtn('cartModal')">&times;</span>
+            <h2>Ваша корзина</h2>
+            
+            <div id="cartEmptyMsg" class="empty-cart-msg">
+                Корзина пуста
+            </div>
+
+            <div id="cartContent" style="display: none;">
+                <div class="cart-items-container" id="cartItems">
+                    </div>
+                
+                <div class="cart-total">
+                    Итого: <span id="cartTotal">0 ₽</span>
+                </div>
+
+                <div class="checkout-form">
+                    <h3>Оформление заказа</h3>
+                    <form id="checkoutForm">
+                        <div class="form-group">
+                            <label>Ваше имя</label>
+                            <input type="text" id="orderName" class="form-input" placeholder="Иван" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Телефон</label>
+                            <input type="tel" id="orderPhone" class="form-input" placeholder="+7 (999) 000-00-00" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Адрес и комментарий</label>
+                            <textarea id="orderComment" class="form-input" placeholder="Адрес доставки..."></textarea>
+                        </div>
+                        <button type="submit" class="auth-button">Оформить заказ</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
